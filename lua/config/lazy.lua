@@ -30,6 +30,21 @@ require("lazy").setup({
     {
       "hrsh7th/nvim-cmp",
       dependencies = { "hrsh7th/cmp-emoji" },
+        "williamboman/mason-lspconfig.nvim",
+        config = function()
+          require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "tailwindcss", "phpactor", "psalm", "pyright", "php-debug-adapter", 
+                "htmlhint", "phpstan", "shellharden", "black", "htmlbeautifier", "pretty-php", "bashls", "shellcheck" } })
+        end,
+        dependencies = { "williamboman/mason.nvim" },
+      },
+      {
+        "neovim/nvim-lspconfig",
+        dependencies = { "williamboman/mason-lspconfig.nvim", "williamboman/mason.nvim" },
+        config = function()
+          -- HERE'S THE BIT I HAD TO CHANGE:
+          require("lspconfig").sumneko_lua.setup({})
+        end,
+      },
 
       opts = function(_, opts)
         local has_words_before = function()
@@ -102,7 +117,3 @@ require("lazy").setup({
     },
   },
 })
-
-require("mason-lspconfig").setup {
-    ensure_installed = { "lua_ls", "phpactor", "tailwindcss" },
-}
