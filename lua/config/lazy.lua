@@ -6,12 +6,44 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
-vim.opt.undodir = vim.fn.stdpath "cache" .. "/undo"
+vim.opt.undodir = vim.fn.stdpath("cache") .. "/undo"
 vim.opt.undofile = true -- enable persistent undo
 
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
+    {
+      "williamboman/mason-lspconfig.nvim",
+      config = function()
+        require("mason-lspconfig").setup({
+          ensure_installed = {
+            "lua_ls",
+            "tailwindcss",
+            "phpactor",
+            "psalm",
+            "pyright",
+            "php-debug-adapter",
+            "htmlhint",
+            "phpstan",
+            "shellharden",
+            "black",
+            "htmlbeautifier",
+            "pretty-php",
+            "bashls",
+            "shellcheck",
+          },
+        })
+      end,
+      dependencies = { "williamboman/mason.nvim" },
+    },
+    {
+      "neovim/nvim-lspconfig",
+      dependencies = { "williamboman/mason-lspconfig.nvim", "williamboman/mason.nvim" },
+      config = function()
+        -- HERE'S THE BIT I HAD TO CHANGE:
+        require("lspconfig").sumneko_lua.setup({})
+      end,
+    },
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     {
       "karb94/neoscroll.nvim",
@@ -30,21 +62,6 @@ require("lazy").setup({
     {
       "hrsh7th/nvim-cmp",
       dependencies = { "hrsh7th/cmp-emoji" },
-        "williamboman/mason-lspconfig.nvim",
-        config = function()
-          require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "tailwindcss", "phpactor", "psalm", "pyright", "php-debug-adapter", 
-                "htmlhint", "phpstan", "shellharden", "black", "htmlbeautifier", "pretty-php", "bashls", "shellcheck" } })
-        end,
-        dependencies = { "williamboman/mason.nvim" },
-      },
-      {
-        "neovim/nvim-lspconfig",
-        dependencies = { "williamboman/mason-lspconfig.nvim", "williamboman/mason.nvim" },
-        config = function()
-          -- HERE'S THE BIT I HAD TO CHANGE:
-          require("lspconfig").sumneko_lua.setup({})
-        end,
-      },
 
       opts = function(_, opts)
         local has_words_before = function()
