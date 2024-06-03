@@ -9,6 +9,10 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 vim.opt.undodir = vim.fn.stdpath "cache" .. "/undo"
 vim.opt.undofile = true -- enable persistent undo
 
+require("mason-lspconfig").setup {
+    ensure_installed = { "lua_ls", "phpactor", "tailwindcss" },
+}
+
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
