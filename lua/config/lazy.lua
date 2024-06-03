@@ -14,36 +14,30 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     {
       "williamboman/mason-lspconfig.nvim",
-      config = function()
-        require("mason-lspconfig").setup({
-          ensure_installed = {
-            "lua_ls",
-            "tailwindcss",
-            "phpactor",
-            "psalm",
-            "pyright",
-            "php-debug-adapter",
-            "htmlhint",
-            "phpstan",
-            "shellharden",
-            "black",
-            "htmlbeautifier",
-            "pretty-php",
-            "bashls",
-            "shellcheck",
-          },
-        })
-      end,
-      dependencies = { "williamboman/mason.nvim" },
+      opts = {
+        ensure_installed = {
+          "lua_ls",
+          "tailwindcss",
+          "phpactor",
+          "psalm",
+          "pyright",
+          "php-debug-adapter",
+          "htmlhint",
+          "phpstan",
+          "shellharden",
+          "black",
+          "htmlbeautifier",
+          "pretty-php",
+          "bashls",
+          "shellcheck",
+          "lua-language-server",
+          "html-lsp",
+          "prettier",
+          "stylua",
+        },
+      },
     },
-    {
-      "neovim/nvim-lspconfig",
-      dependencies = { "williamboman/mason-lspconfig.nvim", "williamboman/mason.nvim" },
-      config = function()
-        -- HERE'S THE BIT I HAD TO CHANGE:
-        require("lspconfig").sumneko_lua.setup({})
-      end,
-    },
+
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     {
       "karb94/neoscroll.nvim",
