@@ -12,7 +12,7 @@ vim.opt.undofile = true -- enable persistent undo
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-
+    { "anordal/shellharden" },
     {
       "williamboman/mason.nvim",
       config = function()
@@ -66,7 +66,6 @@ require("lazy").setup({
             "stylua",
             "isort",
             "cspell",
-            "shellharden",
             "stylua",
             "debugpy",
           },
