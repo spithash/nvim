@@ -12,32 +12,69 @@ vim.opt.undofile = true -- enable persistent undo
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
+
+    {
+      "williamboman/mason.nvim",
+      config = function()
+        require("mason").setup()
+      end,
+    },
     {
       "williamboman/mason-lspconfig.nvim",
-      opts = {
-        ensure_installed = {
-          "lua_ls",
-          "tailwindcss",
-          "phpactor",
-          "psalm",
-          "pyright",
-          "php-debug-adapter",
-          "htmlhint",
-          "phpstan",
-          "shellharden",
-          "black",
-          "htmlbeautifier",
-          "pretty-php",
-          "bashls",
-          "shellcheck",
-          "lua-language-server",
-          "html-lsp",
-          "prettier",
-          "stylua",
-        },
+      requires = {
+        "neovim/nvim-lspconfig",
+        "williamboman/mason.nvim",
       },
+      config = function()
+        require("mason-lspconfig").setup({
+          ensure_installed = {
+            "tsserver",
+            "pyright",
+            "lua_ls",
+            "jsonls",
+            "yamlls",
+            "taplo",
+            "eslint",
+            "omnisharp",
+            "tailwindcss",
+            "phpactor",
+            "psalm",
+            "pyright",
+            "php-debug-adapter",
+            "htmlhint",
+            "phpstan",
+            "shellharden",
+            "black",
+            "htmlbeautifier",
+            "pretty-php",
+            "bashls",
+            "shellcheck",
+            "lua-language-server",
+            "html-lsp",
+            "prettier",
+            "stylua",
+          },
+        })
+      end,
     },
-
+    {
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      requires = {
+        "williamboman/mason.nvim",
+      },
+      config = function()
+        require("mason-tool-installer").setup({
+          ensure_installed = {
+            "prettierd",
+            "black",
+            "isort",
+            "cspell",
+            "stylua",
+            "debugpy",
+          },
+        })
+      end,
+    },
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     {
       "karb94/neoscroll.nvim",
