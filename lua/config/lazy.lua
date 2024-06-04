@@ -27,16 +27,7 @@ require("lazy").setup({
       },
       config = function()
         require("mason-lspconfig").setup({
-          ensure_installed = {
-            "tsserver",
-            "pyright",
-            "lua_ls",
-            "jsonls",
-            "yamlls",
-            "taplo",
-            "eslint",
-            "omnisharp",
-          },
+          ensure_installed = {},
         })
       end,
     },
@@ -49,6 +40,14 @@ require("lazy").setup({
         require("mason-tool-installer").setup({
           ensure_installed = {
             "prettierd",
+            "tsserver",
+            "pyright",
+            "lua_ls",
+            "jsonls",
+            "yamlls",
+            "taplo",
+            "eslint",
+            "omnisharp",
             "black",
             "tailwindcss",
             "phpactor",
