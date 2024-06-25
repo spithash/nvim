@@ -12,6 +12,18 @@ vim.opt.undofile = true -- enable persistent undo
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
+    { "mg979/vim-visual-multi" },
+    {
+      "nvimdev/lspsaga.nvim",
+      config = function()
+        require("lspsaga").setup({})
+      end,
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter", -- optional
+        "nvim-tree/nvim-web-devicons", -- optional
+      },
+    },
+
     { "anordal/shellharden" },
     {
       "williamboman/mason.nvim",
