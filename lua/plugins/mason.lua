@@ -17,6 +17,7 @@ return {
         "omnisharp",
         "black",
         "tailwindcss",
+        "perlnavigator",
         "phpactor",
         "psalm",
         "pyright",
