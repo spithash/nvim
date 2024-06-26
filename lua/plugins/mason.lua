@@ -18,6 +18,7 @@ return {
         "black",
         "tailwindcss",
         "perlnavigator",
+        "clangd",
         "phpactor",
         "psalm",
         "pyright",
