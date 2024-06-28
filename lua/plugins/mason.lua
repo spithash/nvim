@@ -31,6 +31,7 @@ return {
         "shellcheck",
         "lua-language-server",
         "html-lsp",
+        "sql-formatter",
         "prettier",
         "stylua",
         "isort",
