@@ -25,6 +25,7 @@ return {
         "php-debug-adapter",
         "htmlhint",
         "phpstan",
+        "phpcs",
         "black",
         "pretty-php",
         "bashls",
