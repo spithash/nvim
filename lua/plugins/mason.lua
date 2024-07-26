@@ -23,7 +23,6 @@ return {
         "psalm",
         "pyright",
         "php-debug-adapter",
-        "php-cs-fixer",
         "htmlhint",
         "phpstan",
         "black",
