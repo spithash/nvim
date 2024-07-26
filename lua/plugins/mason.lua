@@ -26,7 +26,6 @@ return {
         "php-cs-fixer",
         "htmlhint",
         "phpstan",
-        "phpcs",
         "black",
         "pretty-php",
         "bashls",
