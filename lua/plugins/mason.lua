@@ -7,7 +7,7 @@ return {
     require("mason-tool-installer").setup({
       ensure_installed = {
         "prettierd",
-        "tsserver",
+        "typescript-language-server",
         "pyright",
         "lua_ls",
         "jsonls",
