@@ -35,6 +35,8 @@ return {
         "isort",
         "cspell",
         "debugpy",
+        "terraform",
+        "terraform-ls",
       },
     })
   end,
