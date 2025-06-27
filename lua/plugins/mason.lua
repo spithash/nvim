@@ -19,7 +19,6 @@ return {
         "perlnavigator",
         "clangd",
         "phpactor",
-        "psalm",
         "php-debug-adapter",
         "htmlhint",
         "phpstan",
