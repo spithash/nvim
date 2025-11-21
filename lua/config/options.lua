@@ -93,11 +93,13 @@ opt.wrap = false -- Disable line wrap
 
 if vim.fn.has("nvim-0.10") == 1 then
   opt.smoothscroll = true
-  opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
+  -- use the new treesitter foldexpr
+  opt.foldexpr = "v:lua.require'lazyvim.util'.treesitter.foldexpr()"
   opt.foldmethod = "expr"
   opt.foldtext = ""
 else
   opt.foldmethod = "indent"
+  -- you can keep foldtext the same if it's not deprecated
   opt.foldtext = "v:lua.require'lazyvim.util'.ui.foldtext()"
 end
 
